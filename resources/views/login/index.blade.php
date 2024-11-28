@@ -10,6 +10,10 @@
 </head>
 
 <body>
+
+    <?php if ($valiables["isLoginActive"]) { ?>
+        <a href="/login/unregister">ログアウト</a>
+    <?php } else { ?>
     <h2>新規登録</h2>
     <form method="POST" action="/login/register">
         @csrf
@@ -23,6 +27,7 @@
             <input type="submit" value="送信">
         </div>
     </form>
+    <?php } ?>
 </body>
 
 </html>
