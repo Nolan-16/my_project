@@ -11,10 +11,10 @@ class LoginController extends Controller{
         // 非ログイン時はアカウント登録フォーム、ログイン時はログアウトボタンを表示するといった切り替えのため session に保存された login_id を取得
         $loginId = $request->session()->get("login_id", null);
         $variables =[
-            "isLoginActive"=>isset($loginId)
+            "isLoginActive" => isset($loginId)
         ];
 
-        return view("login/index",$variables);
+        return view("login/index",compact("variables"));
     }
     // ログイン処理
     public function register( Request $request){
@@ -33,8 +33,8 @@ class LoginController extends Controller{
 
         // count(*) の値が 0 より大きい場合は同一 id の record が存在することになるため、処理を終了する。
         $records = (array)($oldRecords[0]);
-        if ($record["count(*)"] > 0) {
-            return response("すでに存在するアカウント id です。<a href='/login'>前のページへ戻る</a>");
+        if ($records["count(*)"] > 0) {
+            return response("すでに存在するアカウント ID です。<a href='/login'>前のページへ戻る</a>");
         }
 
         // ここまで正常に処理が進んだら既存のレコードも存在しないため、入力情報をもとにレコードを追加する。
@@ -49,22 +49,26 @@ class LoginController extends Controller{
         }
 
         // session にログインしている user id を保存
-        $request->session()->put("login_id",$records[0]->id );
+        $request->session()->put("login_id", $records[0]->id);
 
         return response("登録が完了しました<a href='/login'>前のページへ戻る</a>");
     }
 
     // ログイン実装
     public function sign_in(Request $request){
+
+        // 入力フォームから値を取得
         $id = $request->input("id");
         $password = $request->input("password");
 
+        // DBからIDとパスワードを取得、SQLが失敗したら、登録されていないのでエラーになる。
         $records = DB::connection('mysql')->select("select * from users where id_str = '" . $id . "' and password = '" . $password . "'");
         if (count($records)== 0){
             return response("ログイン処理中に問題が発生しました。<a href='/login'>前のページへ戻る</a>");
         }
 
-        $request
+        $request->session()->put("login_id", $records[0]->id);
+        return response("ログインに成功しました。<a href='/login'>戻る</a>");
     }
 
     // ログアウト処理
