@@ -20,8 +20,8 @@ class LoginController extends Controller{
     public function register(Request $request)
     {
         // form からの入力情報の取得
-        $id = $request->input("id");
-        $password = $request->input("password");
+        $id = $request->input("register_id");
+        $password = $request->input("register_password");
 
         // 同一 id の登録が既に存在するかチェックするため、指定された id をもとに DB Record を取得する。
         // select count(*) は where 条件に合致するレコード数を取得する SQL Query。

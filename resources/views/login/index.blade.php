@@ -21,10 +21,10 @@
     <form ref="registerForm" method="POST" action="/login/register">
         @csrf
         <div>
-            ID : <input type="text" v-model="id" name="id">
+            ID : <input type="text" v-model="register_id" name="register_id">
         </div>
         <div>
-            PW : <input type="text" v-model="password" name="password">
+            PW : <input type="text" v-model="register_password" name="register_password">
         </div>
         <div>
             <button type="button" v-on:click="registerSubmit">送信</button>
