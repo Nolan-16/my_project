@@ -50,7 +50,7 @@ class LoginController extends Controller{
         }
 
         // session にログインしている user id を保存
-        $request->session()->put("login_id", $records[0]->id);
+        $request->session()->put("login_id", $records[0]->id_str);
 
         return response("登録が完了しました。<a href='/login'>前のページへ戻る</a>");
     }

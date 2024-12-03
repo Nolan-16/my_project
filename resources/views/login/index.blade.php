@@ -30,7 +30,6 @@
             <button type="button" v-on:click="registerSubmit">送信</button>
         </div>
     </form>
-    <?php } ?>
 
     <h2 class="title">ログイン</h2>
     <form ref="loginForm" method="POST" action="/login/sign_in">
@@ -45,6 +44,7 @@
             <button type="button" v-on:click="loginSubmit">送信</button>
         </div>
     </form>
+    <?php } ?>
     </main>
     <script src="/js/build/login/index.js"></script>
 </body>
