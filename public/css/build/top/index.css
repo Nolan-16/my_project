@@ -22,7 +22,7 @@
   transition: all 500ms;
 }
 
-.tab-layout .tabs .tab :hover {
+.tab-layout .tabs .tab:hover {
   color: white;
   background-color: #1d2946;
 }
@@ -33,7 +33,7 @@
   transition: all 500ms;
 }
 
-.tab-layout .content .show {
+.tab-layout .content.show {
   max-height: 4rem;
   opacity: 1;
 }

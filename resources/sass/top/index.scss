@@ -2,17 +2,17 @@
     padding: 0;
     margin: 0;
 
-    * {
+    & * {
         padding: 0;
         margin: 0;
     }
 
-    .tabs{
+    & .tabs {
         display: flex;
         flex-wrap: nowrap;
         justify-content: left;
 
-        .tab {
+        & .tab {
             width: 100%;
             line-height: 2rem;
 
@@ -20,19 +20,19 @@
             background-color: #ddd;
 
             transition: all 500ms;
-            :hover{
+            &:hover {
                 color: white;
                 background-color: #1d2946;
             }
         }
     }
 
-    .content {
+    & .content {
         max-height: 0rem;
         opacity: 0;
 
         transition: all 500ms;
-        .show{
+        &.show {
             max-height: 4rem;
             opacity: 1;
         }

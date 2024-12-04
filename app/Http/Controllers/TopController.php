@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB; // DB 接続用 class
 
 class TopController extends Controller {
     public function index( Request $request ) {
-        $sampleValue ="sampleテキストです。";
+        $phpValue="ひとよひとよにひとみごろ";
 
         // 参照処理
         // $records=DB::connection('mysql')->select("select * from items");
@@ -22,6 +22,6 @@ class TopController extends Controller {
         // $deleteResult = DB::connection("mysql")->delete("delete from items where name ='りんご'");
         // dd($deleteResult);
 
-        return view("top/index" , ["sampleValue"=> $sampleValue]);
+        return view("top/index" , ["phpValue" => $phpValue]);
     }
 }
